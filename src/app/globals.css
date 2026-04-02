@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 @theme {
   --font-sans: var(--font-geist-sans);
@@ -39,4 +39,70 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  font-weight: 900;
+  color: white;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.markdown-body p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.markdown-body ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+.markdown-body ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+.markdown-body li {
+  margin-bottom: 0.25rem;
+}
+.markdown-body strong {
+  font-weight: 900;
+  color: white;
+}
+.markdown-body table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.markdown-body th {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  font-weight: bold;
+  color: #9ca3af;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+.markdown-body td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  font-size: 14px;
+}
+.markdown-body code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  color: #60a5fa;
+  font-family: monospace;
+  font-size: 12px;
 }

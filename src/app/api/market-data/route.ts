@@ -67,7 +67,7 @@ export async function GET(request: Request) {
 
     let targetIndices = [indexKey];
     if (indexKey === 'all') {
-        targetIndices = ['fno', 'nifty50', 'niftynext50', 'banknifty', 'nifty500'];
+        targetIndices = ['fno', 'nifty50', 'niftynext50', 'banknifty', 'nifty500', 'total'];
     }
 
     const stockMap = new Map<string, Stock>();
@@ -144,3 +144,4 @@ export async function GET(request: Request) {
     }, { status: 200 });
   }
 }
+
