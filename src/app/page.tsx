@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Search, ArrowUp, ArrowDown, TrendingUp, TrendingDown, RefreshCcw, AlertCircle, Layers, ExternalLink, MessageCircle, Send, X, Bot, Sparkles, Zap, Activity, BarChart3, Globe } from 'lucide-react';
@@ -59,6 +59,12 @@ export default function MarketPulse() {
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+
+  const handleIndexChange = (indexId: string) => {
+    setCurrentIndex(indexId);
+    setLoading(true);
+    fetchLiveMarketData(false, indexId);
+  };
 
   const fetchLiveMarketData = useCallback(async (isManual = false, indexId = currentIndex) => {
     if (isManual) setIsRefreshing(true);
@@ -170,14 +176,14 @@ export default function MarketPulse() {
             {tickerMovers.map((s, i) => (
                 <div key={i} className="flex items-center gap-2">
                     <span className="text-[10px] font-black tracking-widest text-white uppercase">{s.symbol}</span>
-                    <span className="text-[10px] font-mono font-black text-gray-300">₹{s.price.toLocaleString(undefined, { minimumFractionDigits: 1 })}</span>
+                    <span className="text-[10px] font-mono font-black text-gray-300">â‚¹{s.price.toLocaleString(undefined, { minimumFractionDigits: 1 })}</span>
                     <span className={cn("text-[10px] font-mono font-black", s.changePercent > 0 ? "text-emerald-400" : "text-rose-400")}>({s.changePercent > 0 ? '+' : ''}{s.changePercent.toFixed(2)}%)</span>
                 </div>
             ))}
             {tickerMovers.map((s, i) => (
                 <div key={`dup-${i}`} className="flex items-center gap-2">
                     <span className="text-[10px] font-black tracking-widest text-white uppercase">{s.symbol}</span>
-                    <span className="text-[10px] font-mono font-black text-gray-300">₹{s.price.toLocaleString(undefined, { minimumFractionDigits: 1 })}</span>
+                    <span className="text-[10px] font-mono font-black text-gray-300">â‚¹{s.price.toLocaleString(undefined, { minimumFractionDigits: 1 })}</span>
                     <span className={cn("text-[10px] font-mono font-black", s.changePercent > 0 ? "text-emerald-400" : "text-rose-400")}>({s.changePercent > 0 ? '+' : ''}{s.changePercent.toFixed(2)}%)</span>
                 </div>
             ))}
@@ -287,7 +293,7 @@ export default function MarketPulse() {
                                         <span className="font-black text-xl text-white group-hover:text-blue-400 transition-colors">{stock.symbol}</span>
                                         {isBreakout && <div className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />}
                                     </div>
-                                    <span className="text-[10px] text-gray-500 font-black uppercase mt-0.5">{stock.name.split(' ')[0]} • NSE</span>
+                                    <span className="text-[10px] text-gray-500 font-black uppercase mt-0.5">{stock.name.split(' ')[0]} â€¢ NSE</span>
                                 </div>
                             </div>
                         </td>
@@ -369,3 +375,4 @@ export default function MarketPulse() {
     </div>
   );
 }
+
